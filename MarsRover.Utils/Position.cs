@@ -34,7 +34,12 @@ namespace MarsRover.Utils
 
         public override string ToString()
         {
-            return $"{Point.X} {Point.Y} {Heading.Value}";
+            return $"{Point.X} {Point.Y} {Heading}";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return ToString().Equals(obj?.ToString());
         }
     }
 }

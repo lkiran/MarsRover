@@ -8,6 +8,16 @@ namespace MarsRover.Utils
         public Point Direction { get; set; }
         public CardinalPoint Right { get; set; }
         public CardinalPoint Left { get; set; }
+
+        public override string ToString()
+        {
+            return Value;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return ToString().Equals(obj?.ToString());
+        }
     };
 
     public static class Cardinals
@@ -22,7 +32,15 @@ namespace MarsRover.Utils
             Insert("W", new Point(-1, 0));
         }
 
-        public static CardinalPoint DefaultCardinalPoint => _start;
+        public static CardinalPoint DefaultCardinalPoint
+        {
+            get
+            {
+                PopulateCardinals();
+                return _start;
+            }
+        }
+
         private static CardinalPoint _start;
 
         private static void Insert(string value, Point direction)
@@ -48,7 +66,7 @@ namespace MarsRover.Utils
         public static CardinalPoint Get(string value)
         {
             if (_start == null)
-                return null;
+                PopulateCardinals();
 
             var current = _start;
             while (!current.Value.Equals(value))

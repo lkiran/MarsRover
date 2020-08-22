@@ -5,7 +5,7 @@ namespace MarsRover.Tests
 {
     public class RoverTurnTests
     {
-        public Rover Rover { get; set; }
+        private Rover Rover { get; set; }
 
         [SetUp]
         public void Setup()

@@ -1,3 +1,5 @@
+using System;
+
 namespace MarsRover.Utils
 {
     public class Point
@@ -16,6 +18,11 @@ namespace MarsRover.Utils
         public override string ToString()
         {
             return $"{X} {Y}";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return ToString().Equals(obj?.ToString());
         }
     }
 }
