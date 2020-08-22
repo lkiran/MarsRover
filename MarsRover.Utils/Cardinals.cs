@@ -1,0 +1,62 @@
+using System.Collections.Generic;
+
+namespace MarsRover.Utils
+{
+    public class CardinalPoint
+    {
+        public string Value { get; set; }
+        public Point Direction { get; set; }
+        public CardinalPoint Right { get; set; }
+        public CardinalPoint Left { get; set; }
+    };
+
+    public static class Cardinals
+    {
+        public static void PopulateCardinals()
+        {
+            if (_start != null)
+                return;
+            Insert("N", new Point(0, 1));
+            Insert("E", new Point(1, 0));
+            Insert("S", new Point(0, -1));
+            Insert("W", new Point(-1, 0));
+        }
+
+        public static CardinalPoint DefaultCardinalPoint => _start;
+        private static CardinalPoint _start;
+
+        private static void Insert(string value, Point direction)
+        {
+            CardinalPoint newCardinalPoint;
+
+            if (_start == null)
+            {
+                newCardinalPoint = new CardinalPoint {Value = value, Direction = direction};
+                newCardinalPoint.Right = newCardinalPoint.Left = newCardinalPoint;
+                _start = newCardinalPoint;
+
+                return;
+            }
+
+            var last = _start.Left;
+            newCardinalPoint = new CardinalPoint {Value = value, Direction = direction, Right = _start};
+            _start.Left = newCardinalPoint;
+            newCardinalPoint.Left = last;
+            last.Right = newCardinalPoint;
+        }
+
+        public static CardinalPoint Get(string value)
+        {
+            if (_start == null)
+                return null;
+
+            var current = _start;
+            while (!current.Value.Equals(value))
+            {
+                current = current.Right;
+            }
+
+            return current;
+        }
+    }
+}

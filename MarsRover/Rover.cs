@@ -11,41 +11,20 @@ namespace MarsRover
 
         public Position Position { get; private set; }
 
-        public void Move(int step)
+        public void Move()
         {
-            switch (Position.Heading)
-            {
-                case Orientation.N:
-                    Position.Point.Y += step;
-                    break;
-                case Orientation.E:
-                    Position.Point.X += step;
-                    break;
-                case Orientation.S:
-                    Position.Point.Y += -step;
-                    break;
-                case Orientation.W:
-                    Position.Point.X += -step;
-                    break;
-            }
+            Position.Point.X += Position.Heading.Direction.X;
+            Position.Point.Y += Position.Heading.Direction.Y;
         }
 
         public void Turn(Rotate rotate)
         {
-            switch (Position.Heading)
-            {
-                case Orientation.N when rotate == Rotate.L:
-                    Position.Heading = Orientation.W;
-                    break;
-                case Orientation.W when rotate == Rotate.R:
-                    Position.Heading = Orientation.N;
-                    break;
-                default:
-                    Position.Heading += (int) rotate;
-                    break;
-            }
+            if (rotate == Rotate.L)
+                Position.Heading = Position.Heading.Left;
+            else if (rotate == Rotate.R)
+                Position.Heading = Position.Heading.Right;
         }
-        
+
         public override string ToString()
         {
             return Position.ToString();

@@ -10,7 +10,7 @@ namespace MarsRover.Tests
         [SetUp]
         public void Setup()
         {
-            var deployedAt = new Position(Point.Origin, Orientation.N);
+            var deployedAt = new Position();
             Rover = new Rover(deployedAt, new Plateau());
         }
 
@@ -18,14 +18,14 @@ namespace MarsRover.Tests
         public void TurnLeft()
         {
             Rover.Turn(Rotate.L);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.W);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("W"));
         }
 
         [Test]
         public void TurnRight()
         {
             Rover.Turn(Rotate.R);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.E);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("E"));
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace MarsRover.Tests
         {
             Rover.Turn(Rotate.L);
             Rover.Turn(Rotate.L);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.S);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("S"));
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace MarsRover.Tests
         {
             Rover.Turn(Rotate.R);
             Rover.Turn(Rotate.R);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.S);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("S"));
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace MarsRover.Tests
             Rover.Turn(Rotate.L);
             Rover.Turn(Rotate.L);
             Rover.Turn(Rotate.L);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.E);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("E"));
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace MarsRover.Tests
             Rover.Turn(Rotate.R);
             Rover.Turn(Rotate.R);
             Rover.Turn(Rotate.R);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.W);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("W"));
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace MarsRover.Tests
             Rover.Turn(Rotate.L);
             Rover.Turn(Rotate.L);
             Rover.Turn(Rotate.L);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.N);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("N"));
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace MarsRover.Tests
             Rover.Turn(Rotate.R);
             Rover.Turn(Rotate.R);
             Rover.Turn(Rotate.R);
-            Assert.AreEqual(Rover.Position.Heading, Orientation.N);
+            Assert.AreEqual(Rover.Position.Heading, Cardinals.Get("N"));
         }
     }
 }

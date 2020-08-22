@@ -3,7 +3,7 @@ namespace MarsRover.Utils
     public class Position
     {
         private Point? _point;
-        private Orientation? _heading;
+        private CardinalPoint? _heading;
 
         public Point Point
         {
@@ -11,9 +11,9 @@ namespace MarsRover.Utils
             set => _point = value;
         }
 
-        public Orientation Heading
+        public CardinalPoint Heading
         {
-            get => _heading ?? Orientation.N;
+            get => _heading ?? Cardinals.DefaultCardinalPoint;
             set => _heading = value;
         }
 
@@ -23,10 +23,10 @@ namespace MarsRover.Utils
 
         public Position(Point point)
         {
-            _heading = Orientation.N;
+            _point = point;
         }
 
-        public Position(Point point, Orientation heading)
+        public Position(Point point, CardinalPoint heading)
         {
             _point = point;
             _heading = heading;
@@ -34,7 +34,7 @@ namespace MarsRover.Utils
 
         public override string ToString()
         {
-            return $"{Point.X} {Point.Y} {Heading}";
+            return $"{Point.X} {Point.Y} {Heading.Value}";
         }
     }
 }

@@ -16,7 +16,7 @@ namespace MarsRover.Tests
         [Test]
         public void DeployRoverAt_3_2_S()
         {
-            var position = (new Position(new Point(3, 2), Orientation.S));
+            var position = (new Position(new Point(3, 2), Cardinals.Get("S")));
             var deployedRover = Plateau.DeployRover(position);
             Assert.AreEqual(deployedRover.Position,position);
         }
