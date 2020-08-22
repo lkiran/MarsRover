@@ -2,11 +2,11 @@
 
 namespace MarsRover
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			Console.WriteLine("Mars Rover");
-		}
-	}
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
 }
