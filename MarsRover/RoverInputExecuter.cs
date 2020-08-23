@@ -6,7 +6,7 @@ using MarsRover.Utils;
 
 namespace MarsRover
 {
-    public static class RoverInputHandler
+    public static class RoverInputExecuter
     {
         private static readonly Dictionary<char, MethodInfo?> MethodCache = new Dictionary<char, MethodInfo?>();
 
