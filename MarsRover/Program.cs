@@ -12,6 +12,7 @@ namespace MarsRover
 
             while (true)
             {
+                Console.Write("-> ");
                 var input = Console.ReadLine();
                 if(string.IsNullOrWhiteSpace(input) || input== "\n")
                     break;
