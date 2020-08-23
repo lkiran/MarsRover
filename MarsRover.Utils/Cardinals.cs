@@ -76,5 +76,18 @@ namespace MarsRover.Utils
 
             return current;
         }
+
+        public static List<CardinalPoint> ToList()
+        {
+            var result = new List<CardinalPoint>();
+            CardinalPoint temp = _start;
+            do
+            {
+                result.Add(temp);
+                temp = temp.Right;
+            } while (!temp.Equals(_start));
+
+            return result;
+        }
     }
 }
