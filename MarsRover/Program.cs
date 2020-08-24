@@ -28,6 +28,8 @@ namespace MarsRover
             }
 
             plateau.Rovers.ForEach(r => Console.WriteLine(r.Position));
+            
+            Console.ReadLine();
         }
     }
 }
