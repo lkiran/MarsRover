@@ -1,5 +1,9 @@
 # MarsRover
-![Publish](https://github.com/lkiran/MarsRover/workflows/Publish/badge.svg)
+![Publish](https://github.com/lkiran/MarsRover/workflows/Publish/badge.svg?branch=v1.0)
+[for Linux](https://github.com/lkiran/MarsRover/releases/download/latest/MarsRover-linux-x64.tar.gz)
+[for MacOS](https://github.com/lkiran/MarsRover/releases/download/latest/MarsRover-osx-x64.tar.gz)
+[for Windows](https://github.com/lkiran/MarsRover/releases/download/latest/MarsRover-win-x64.zip)
+
 ## Description
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars. This plateau, which is curiously rectangular, must be navigated by the rovers so that their on board cameras can get a complete view of the surrounding terrain to send back to Earth. 
 
