@@ -45,7 +45,7 @@ namespace MarsRover
                     $"Rover heading can be one of {string.Join(", ", Cardinals.ToList().Select(c => c.Value))}");
 
             var position = new Position(new Point(x, y), heading);
-            var rover = plateau.DeployRover(position);
+            var rover = (Rover)plateau.DeployRover(position);
 
             return rover;
         }

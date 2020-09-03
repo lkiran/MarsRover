@@ -29,7 +29,8 @@ namespace MarsRover
         {
             var parameters = new object[] { };
             var method = GetCommandMethod(command);
-            if (method != null)
+          
+            if (method != null && rover.IsAlive)
                 method.Invoke(rover, parameters);
         }
 

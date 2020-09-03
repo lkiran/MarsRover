@@ -9,11 +9,11 @@ namespace MarsRover.Tests
         private Rover Rover { get; set; }
 
         [SetUp]
-        public void Setup()
-        {
-            Plateau = new Plateau(Point.Origin, new Point(2, 2));
-            Rover = Plateau.DeployRover(new Position(new Point(1, 1)));
-        }
+        // public void Setup()
+        // {
+        //     Plateau = new Plateau(Point.Origin, new Point(2, 2));
+        //     Rover = Plateau.DeployRover(new Position(new Point(1, 1)));
+        // }
 
         [Test]
         public void CreatePlateau()

@@ -2,20 +2,42 @@ using MarsRover.Utils;
 
 namespace MarsRover
 {
-    public class Rover
+    public class Rover : IObstacle
     {
         public Rover(Position position, Plateau plateau)
         {
             Position = position;
+            Plateau = plateau;
         }
 
-        public Position Position { get; private set; }
+        public bool IsAlive { get; set; } = true;
+
+        public Position Position { get; set; }
+
+        public Plateau Plateau { get; private set; }
 
         [Command('M')]
         public void Move()
         {
-            Position.Point.X += Position.Heading.Direction.X;
-            Position.Point.Y += Position.Heading.Direction.Y;
+            var corpseAtPosition = Plateau.GetCorpseInPosition(Position);
+            if (corpseAtPosition != null)
+                return;
+
+            Position targetPosition = new Position()
+            {
+                Heading = Position.Heading,
+                Point = new Point
+                {
+                    X = Position.Point.X + Position.Heading.Direction.X,
+                    Y = Position.Point.Y + Position.Heading.Direction.Y
+                }
+            };
+
+
+            if (Plateau.IsPointInPlateau(targetPosition.Point))
+                Position = targetPosition;
+            else
+                IsAlive = false;
         }
 
         [Command('L')]
@@ -23,7 +45,7 @@ namespace MarsRover
         {
             Position.Heading = Position.Heading.Left;
         }
-        
+
         [Command('R')]
         public void TurnRight()
         {
@@ -41,6 +63,14 @@ namespace MarsRover
         public override string ToString()
         {
             return Position.ToString();
+        }
+
+
+        public string Print()
+        {
+            return IsAlive
+                ? Position.ToString()
+                : $"{Position} RIP";
         }
     }
 }

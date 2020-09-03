@@ -9,26 +9,25 @@ namespace MarsRover
         private Point? _bottomLeft;
         private Point? _topRight;
 
-        public readonly List<Rover> Rovers;
+        public readonly List<IObstacle> Obstacles;
 
         public Plateau()
         {
-            Rovers = new List<Rover>();
+            Obstacles = new List<IObstacle>();
         }
 
         public Plateau(Point topRight)
         {
             TopRight = topRight;
-            Rovers = new List<Rover>();
+            Obstacles = new List<IObstacle>();
         }
 
         public Plateau(Point bottomLeft, Point topRight)
         {
             BottomLeft = bottomLeft;
             TopRight = topRight;
-            Rovers = new List<Rover>();
+            Obstacles = new List<IObstacle>();
         }
-
 
         public Point BottomLeft
         {
@@ -42,10 +41,10 @@ namespace MarsRover
             set => _topRight = value;
         }
 
-        public Rover DeployRover(Position position)
+        public IObstacle DeployRover(Position position)
         {
             var newRover = new Rover(position, this);
-            Rovers.Add(newRover);
+            Obstacles.Add(newRover);
             return newRover;
         }
 
@@ -58,6 +57,14 @@ namespace MarsRover
             && TopRight.Y >= point.Y;
 
         public bool IsThereARoverAtPoint(Point point) =>
-            Rovers.Any(r => r.Position.Point.X == point.X && r.Position.Point.Y == point.Y);
+            Obstacles.Any(r => r.Position.Point.X == point.X && r.Position.Point.Y == point.Y);
+
+        public Rover GetCorpseInPosition(Position position)
+        {
+            return (Rover) Obstacles.FirstOrDefault(o => o.Position.Heading.Value == position.Heading.Value
+                                                         && o.Position.Point.X == position.Point.X
+                                                         && o.Position.Point.Y == position.Point.Y
+                                                         && !((Rover) o).IsAlive);
+        }
     }
 }

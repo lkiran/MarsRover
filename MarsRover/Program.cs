@@ -6,7 +6,7 @@ namespace MarsRover
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Queue<string> commands = new Queue<string>();
 
@@ -14,12 +14,12 @@ namespace MarsRover
             {
                 Console.Write("-> ");
                 var input = Console.ReadLine();
-                if(string.IsNullOrWhiteSpace(input) || input== "\n")
+                if (string.IsNullOrWhiteSpace(input) || input == "\n")
                     break;
-                
+
                 commands.Enqueue(input.ToUpper());
             }
-            
+
             var plateau = PlateauInputExecuter.Create(commands.Dequeue());
             while (commands.Any())
             {
@@ -27,8 +27,8 @@ namespace MarsRover
                 RoverInputExecuter.Execute(rover, commands.Dequeue());
             }
 
-            plateau.Rovers.ForEach(r => Console.WriteLine(r.Position));
-            
+            plateau.Obstacles.ForEach(r => Console.WriteLine(r.Print()));
+
             Console.ReadLine();
         }
     }

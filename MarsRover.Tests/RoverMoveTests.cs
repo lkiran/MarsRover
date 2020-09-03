@@ -12,7 +12,7 @@ namespace MarsRover.Tests
         public void Setup()
         {
             Plateau = new Plateau(Point.Origin, new Point(2,2));
-            Rover = Plateau.DeployRover(new Position(new Point(1, 1)));
+            // Rover = Plateau.DeployRover(new Position(new Point(1, 1)));
         }
 
         [Test]
